@@ -17,7 +17,7 @@ export function Reveal({
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setShown(true);
+        if (entry?.isIntersecting) setShown(true);
       },
       { threshold: 0.2 },
     );
