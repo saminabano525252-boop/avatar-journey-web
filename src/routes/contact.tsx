@@ -6,6 +6,8 @@ import { Reveal } from "@/components/Reveal";
 import { AvatarGuide, type GuideStop } from "@/components/AvatarGuide";
 import { useAvatarChat } from "@/components/AvatarChatProvider";
 
+const SITE = "https://avatar-journey-web.lovable.app";
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
@@ -20,10 +22,31 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "Start a web, design or growth project with SAIF Solutions.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE}/contact` },
+    ],
+    links: [{ rel: "canonical", href: `${SITE}/contact` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          url: `${SITE}/contact`,
+          name: "Contact SAIF Solutions",
+          about: {
+            "@type": "Organization",
+            name: "SAIF Solutions",
+            email: "hello@saifsolutions.com",
+            telephone: "+1-555-018-4420",
+          },
+        }),
+      },
     ],
   }),
   component: Contact,
 });
+
 
 const stops: GuideStop[] = [
   { id: "contact-form", line: "Drop your brief here — or just chat with me instead.", side: "left" },

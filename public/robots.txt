@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://avatar-journey-web.lovable.app/sitemap.xml
+

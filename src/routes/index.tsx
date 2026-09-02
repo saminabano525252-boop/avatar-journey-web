@@ -5,6 +5,9 @@ import { Reveal } from "@/components/Reveal";
 import { useAvatarChat } from "@/components/AvatarChatProvider";
 import logo from "@/assets/saif-logo.png.asset.json";
 
+const SITE = "https://avatar-journey-web.lovable.app";
+const OG_IMAGE = `${SITE}${logo.url}`;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -19,10 +22,39 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Interactive 3D websites, brand graphics and growth marketing from SAIF Solutions.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE}/` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: `${SITE}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "SAIF Solutions",
+          url: SITE,
+          logo: OG_IMAGE,
+          image: OG_IMAGE,
+          description:
+            "3D web development, graphic design and growth marketing studio.",
+          areaServed: "Worldwide",
+          email: "hello@saifsolutions.com",
+          telephone: "+1-555-018-4420",
+          makesOffer: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Solutions" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Graphic Solutions" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Marketing Solutions" } },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
 });
+
 
 const stops: GuideStop[] = [
   { id: "hero", line: "Welcome to SAIF Solutions. Scroll — I'll walk you through what we do.", side: "left" },

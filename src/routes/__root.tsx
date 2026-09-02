@@ -93,7 +93,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Interactive 3D web, graphic and marketing solutions by SAIF Solutions.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "SAIF Solutions" },
       { name: "twitter:card", content: "summary_large_image" },
+
     ],
     links: [
       { rel: "stylesheet", href: appCss },
