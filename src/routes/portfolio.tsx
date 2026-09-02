@@ -5,6 +5,8 @@ import { Reveal } from "@/components/Reveal";
 import { AvatarGuide, type GuideStop } from "@/components/AvatarGuide";
 import { useAvatarChat } from "@/components/AvatarChatProvider";
 
+const SITE = "https://avatar-journey-web.lovable.app";
+
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
@@ -19,10 +21,27 @@ export const Route = createFileRoute("/portfolio")({
         property: "og:description",
         content: "3D web builds, brand identity systems and growth marketing campaigns by SAIF Solutions.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE}/portfolio` },
+    ],
+    links: [{ rel: "canonical", href: `${SITE}/portfolio` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+            { "@type": "ListItem", position: 2, name: "Portfolio", item: `${SITE}/portfolio` },
+          ],
+        }),
+      },
     ],
   }),
   component: Portfolio,
 });
+
 
 const stops: GuideStop[] = [
   { id: "work-web", line: "Web builds first — tap any card for the full case.", side: "right" },
