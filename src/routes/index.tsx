@@ -141,6 +141,7 @@ const projects: Project[] = [
 
 function Index() {
   const { open } = useAvatarChat();
+  const [active, setActive] = useState<Project | null>(null);
 
   return (
     <div className="relative">
@@ -149,16 +150,15 @@ function Index() {
       <section id="hero" className="flex min-h-screen items-center px-6 pt-28">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 md:grid-cols-2">
           <Reveal>
-            <p className="font-display text-xs tracking-[0.4em] text-accent">SAIF SOLUTIONS · KARACHI, PAKISTAN</p>
+            <p className="font-display text-xs tracking-[0.4em] text-accent">SAIF SOLUTIONS · WEB · GRAPHIC · MARKETING</p>
             <h1 className="chrome-text mt-4 text-5xl leading-tight md:text-7xl">
-              KARACHI'S 3D
+              WE BUILD IN
               <br />
-              DIGITAL STUDIO
+              3 DIMENSIONS
             </h1>
             <p className="mt-5 max-w-md text-lg text-muted-foreground">
-              Web design, graphic design and digital marketing for businesses in Karachi and across
-              Pakistan — engineered with motion, depth, and a robot guide that walks you through every step.
-              Online 24/7.
+              Web design, graphic design and digital marketing — engineered with motion, depth and a
+              robot guide that walks you through every step. Online 24/7, worldwide.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <button
@@ -180,14 +180,16 @@ function Index() {
               <img
                 src={logo.url}
                 alt="SAIF Solutions chrome circuit logo"
-                width={640}
-                height={640}
-                className="animate-float w-full object-contain mix-blend-screen drop-shadow-[0_0_60px_oklch(0.62_0.24_262/70%)]"
+                width={840}
+                height={779}
+                fetchPriority="high"
+                className="animate-float w-full object-contain drop-shadow-[0_0_60px_oklch(0.62_0.24_262/70%)]"
               />
             </div>
           </Reveal>
         </div>
       </section>
+
 
       {services.map((s, i) => (
         <section key={s.id} id={s.id} className="flex min-h-screen items-center px-6 py-24">
