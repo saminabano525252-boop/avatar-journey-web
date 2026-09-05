@@ -119,16 +119,16 @@ function Index() {
       <section id="hero" className="flex min-h-screen items-center px-6 pt-28">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 md:grid-cols-2">
           <Reveal>
-            <p className="font-display text-xs tracking-[0.4em] text-accent">SAIF SOLUTIONS</p>
+            <p className="font-display text-xs tracking-[0.4em] text-accent">SAIF SOLUTIONS · KARACHI, PAKISTAN</p>
             <h1 className="chrome-text mt-4 text-5xl leading-tight md:text-7xl">
-              WE BUILD IN
+              KARACHI'S 3D
               <br />
-              3 DIMENSIONS
+              DIGITAL STUDIO
             </h1>
             <p className="mt-5 max-w-md text-lg text-muted-foreground">
-              Web, graphic and marketing solutions — engineered with motion, depth and a robot guide that
-              walks you through every step.
-            </p>
+              Web design, graphic design and digital marketing for businesses in Karachi and across
+              Pakistan — engineered with motion, depth, and a robot guide that walks you through every step.
+              Online 24/7.
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 onClick={open}
