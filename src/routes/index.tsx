@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Code2, Palette, Megaphone, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { Code2, Palette, Megaphone, ArrowRight, X, ExternalLink } from "lucide-react";
 import { AvatarGuide, type GuideStop } from "@/components/AvatarGuide";
 import { Reveal } from "@/components/Reveal";
 import { useAvatarChat } from "@/components/AvatarChatProvider";
@@ -11,23 +12,21 @@ const OG_IMAGE = `${SITE}${logo.url}`;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Web Design & Digital Marketing Agency in Karachi — SAIF Solutions" },
+      { title: "SAIF Solutions — 3D Web Design, Graphics & Digital Marketing" },
       {
         name: "description",
         content:
-          "SAIF Solutions is a Karachi-based digital agency building interactive 3D websites, brand graphics and growth marketing for businesses across Pakistan — online 24/7.",
+          "SAIF Solutions builds interactive 3D websites, brand graphics and growth marketing campaigns for businesses worldwide — online 24/7.",
       },
-      { property: "og:title", content: "Web Design & Digital Marketing Agency in Karachi — SAIF Solutions" },
+      { property: "og:title", content: "SAIF Solutions — 3D Web Design, Graphics & Digital Marketing" },
       {
         property: "og:description",
-        content: "Karachi's 3D web design, graphic design and digital marketing studio, serving clients across Pakistan and worldwide.",
+        content: "Interactive 3D web design, graphic design and digital marketing, delivered worldwide.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/` },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "geo.region", content: "PK-SD" },
-      { name: "geo.placename", content: "Karachi" },
     ],
     links: [{ rel: "canonical", href: `${SITE}/` }],
     scripts: [
@@ -41,19 +40,8 @@ export const Route = createFileRoute("/")({
           logo: OG_IMAGE,
           image: OG_IMAGE,
           description:
-            "Karachi-based digital agency for 3D web development, graphic design and growth marketing, serving businesses across Pakistan and worldwide.",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Karachi",
-            addressRegion: "Sindh",
-            addressCountry: "PK",
-          },
-          geo: { "@type": "GeoCoordinates", latitude: 24.8607, longitude: 67.0011 },
-          areaServed: [
-            { "@type": "City", name: "Karachi" },
-            { "@type": "Country", name: "Pakistan" },
-            "Worldwide",
-          ],
+            "Digital studio for 3D web development, graphic design and growth marketing, serving clients worldwide.",
+          areaServed: "Worldwide",
           openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",
             dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -62,9 +50,9 @@ export const Route = createFileRoute("/")({
           },
           priceRange: "$$",
           makesOffer: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Design & Development Karachi" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Design & Development" } },
             { "@type": "Offer", itemOffered: { "@type": "Service", name: "Graphic Design & Branding" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing & SEO Pakistan" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing & SEO" } },
           ],
         }),
       },
@@ -75,11 +63,12 @@ export const Route = createFileRoute("/")({
 
 
 const stops: GuideStop[] = [
-  { id: "hero", line: "Welcome to SAIF Solutions. Scroll — I'll walk you through what we do.", side: "left" },
+  { id: "hero", line: "Welcome to SAIF Solutions! Scroll — I'll walk you through what we do.", side: "right" },
   { id: "web", line: "Web Solutions! 3D interactive sites and web apps, right this way.", side: "right" },
   { id: "graphic", line: "Graphic Solutions — chrome logos, 3D brand kits, motion design.", side: "left" },
   { id: "marketing", line: "Marketing Solutions: SEO, ads and funnels that actually convert.", side: "right" },
-  { id: "cta", line: "Ready? Ping me in chat or hit the contact page.", side: "left" },
+  { id: "projects", line: "Here's the work — hover a card, click to open the project.", side: "left" },
+  { id: "cta", line: "Ready? Ping me in chat or hit the contact page.", side: "right" },
 ];
 
 const services = [
@@ -88,7 +77,7 @@ const services = [
     icon: Code2,
     title: "Web Solutions",
     tag: "01 / BUILD",
-    copy: "Website design and development for Karachi businesses — interactive 3D sites, web apps, e-commerce stores and dashboards engineered for speed and motion.",
+    copy: "Website design and development — interactive 3D sites, web apps, e-commerce stores and dashboards engineered for speed and motion.",
     items: ["3D & motion sites", "Web apps & portals", "E-commerce stores", "Performance tuning"],
   },
   {
@@ -96,7 +85,7 @@ const services = [
     icon: Palette,
     title: "Graphic Solutions",
     tag: "02 / DESIGN",
-    copy: "Logo design and branding trusted by Pakistani startups — chrome-grade identities, 3D brand systems, packaging and social kits that stop the scroll.",
+    copy: "Chrome-grade brand identities, 3D brand systems, packaging and social kits that stop the scroll.",
     items: ["Logo & identity", "3D product visuals", "Packaging", "Social kits"],
   },
   {
@@ -104,10 +93,51 @@ const services = [
     icon: Megaphone,
     title: "Marketing Solutions",
     tag: "03 / GROW",
-    copy: "Local SEO, Google visibility, paid media and content engines that put Karachi and Pakistan businesses on the map — wired into one growth loop.",
-    items: ["Local SEO & Google", "Paid ads", "Content engine", "Funnel analytics"],
+    copy: "SEO, search visibility, paid media and content engines wired into one measurable growth loop.",
+    items: ["SEO & search", "Paid ads", "Content engine", "Funnel analytics"],
   },
 ];
+
+type Project = { title: string; category: string; result: string; detail: string; href: string };
+
+const projects: Project[] = [
+  {
+    title: "Nova Commerce",
+    category: "3D storefront",
+    result: "+38% conversion",
+    detail: "A WebGL-flavoured storefront with scroll-driven product reveals, instant search and a rebuilt checkout.",
+    href: "/portfolio",
+  },
+  {
+    title: "Orbit Dashboard",
+    category: "Web app",
+    result: "12k daily users",
+    detail: "Realtime analytics console with role-based access, live charts and offline-tolerant sync.",
+    href: "/portfolio",
+  },
+  {
+    title: "Chrome Identity",
+    category: "Brand system",
+    result: "Full rebrand",
+    detail: "3D chrome wordmark, motion logo, colour system and a 60-page brand book.",
+    href: "/portfolio",
+  },
+  {
+    title: "Ascend SEO",
+    category: "Organic growth",
+    result: "4x traffic",
+    detail: "Technical fixes, topical clusters and digital PR over a six-month sprint.",
+    href: "/portfolio",
+  },
+  {
+    title: "Flux Ads",
+    category: "Paid media",
+    result: "2.7x ROAS",
+    detail: "Creative testing engine across paid social and search with weekly iteration.",
+    href: "/portfolio",
+  },
+];
+
 
 function Index() {
   const { open } = useAvatarChat();
