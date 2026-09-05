@@ -88,15 +88,15 @@ const services = [
     icon: Code2,
     title: "Web Solutions",
     tag: "01 / BUILD",
-    copy: "Interactive 3D websites, web apps, e-commerce and dashboards engineered for speed and motion.",
-    items: ["3D & motion sites", "Web apps & portals", "E-commerce", "Performance tuning"],
+    copy: "Website design and development for Karachi businesses — interactive 3D sites, web apps, e-commerce stores and dashboards engineered for speed and motion.",
+    items: ["3D & motion sites", "Web apps & portals", "E-commerce stores", "Performance tuning"],
   },
   {
     id: "graphic",
     icon: Palette,
     title: "Graphic Solutions",
     tag: "02 / DESIGN",
-    copy: "Chrome-grade logos, 3D brand systems, packaging and social kits that stop the scroll.",
+    copy: "Logo design and branding trusted by Pakistani startups — chrome-grade identities, 3D brand systems, packaging and social kits that stop the scroll.",
     items: ["Logo & identity", "3D product visuals", "Packaging", "Social kits"],
   },
   {
@@ -104,8 +104,8 @@ const services = [
     icon: Megaphone,
     title: "Marketing Solutions",
     tag: "03 / GROW",
-    copy: "SEO, paid media, content engines and analytics wired into one growth loop.",
-    items: ["SEO", "Paid ads", "Content engine", "Funnel analytics"],
+    copy: "Local SEO, Google visibility, paid media and content engines that put Karachi and Pakistan businesses on the map — wired into one growth loop.",
+    items: ["Local SEO & Google", "Paid ads", "Content engine", "Funnel analytics"],
   },
 ];
 
