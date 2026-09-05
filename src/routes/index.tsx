@@ -11,21 +11,23 @@ const OG_IMAGE = `${SITE}${logo.url}`;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SAIF Solutions — 3D Web, Graphic & Marketing Studio" },
+      { title: "Web Design & Digital Marketing Agency in Karachi — SAIF Solutions" },
       {
         name: "description",
         content:
-          "SAIF Solutions builds interactive 3D websites, bold brand graphics and growth marketing — guided by our robot assistant.",
+          "SAIF Solutions is a Karachi-based digital agency building interactive 3D websites, brand graphics and growth marketing for businesses across Pakistan — online 24/7.",
       },
-      { property: "og:title", content: "SAIF Solutions — 3D Web, Graphic & Marketing Studio" },
+      { property: "og:title", content: "Web Design & Digital Marketing Agency in Karachi — SAIF Solutions" },
       {
         property: "og:description",
-        content: "Interactive 3D websites, brand graphics and growth marketing from SAIF Solutions.",
+        content: "Karachi's 3D web design, graphic design and digital marketing studio, serving clients across Pakistan and worldwide.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/` },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "geo.region", content: "PK-SD" },
+      { name: "geo.placename", content: "Karachi" },
     ],
     links: [{ rel: "canonical", href: `${SITE}/` }],
     scripts: [
@@ -39,14 +41,30 @@ export const Route = createFileRoute("/")({
           logo: OG_IMAGE,
           image: OG_IMAGE,
           description:
-            "3D web development, graphic design and growth marketing studio.",
-          areaServed: "Worldwide",
-          email: "hello@saifsolutions.com",
-          telephone: "+1-555-018-4420",
+            "Karachi-based digital agency for 3D web development, graphic design and growth marketing, serving businesses across Pakistan and worldwide.",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Karachi",
+            addressRegion: "Sindh",
+            addressCountry: "PK",
+          },
+          geo: { "@type": "GeoCoordinates", latitude: 24.8607, longitude: 67.0011 },
+          areaServed: [
+            { "@type": "City", name: "Karachi" },
+            { "@type": "Country", name: "Pakistan" },
+            "Worldwide",
+          ],
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            opens: "00:00",
+            closes: "23:59",
+          },
+          priceRange: "$$",
           makesOffer: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Solutions" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Graphic Solutions" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Marketing Solutions" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Design & Development Karachi" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Graphic Design & Branding" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing & SEO Pakistan" } },
           ],
         }),
       },
