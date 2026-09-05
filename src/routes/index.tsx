@@ -129,6 +129,7 @@ function Index() {
               Web design, graphic design and digital marketing for businesses in Karachi and across
               Pakistan — engineered with motion, depth, and a robot guide that walks you through every step.
               Online 24/7.
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 onClick={open}
