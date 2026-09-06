@@ -225,7 +225,78 @@ function Index() {
         </section>
       ))}
 
+      <section id="projects" className="px-6 py-24">
+        <Reveal>
+          <div className="mx-auto max-w-6xl">
+            <p className="font-display text-xs tracking-[0.4em] text-accent">04 / WORK</p>
+            <h2 className="chrome-text mt-3 text-4xl md:text-6xl">FIVE PROJECTS</h2>
+            <p className="mt-4 max-w-xl text-lg text-muted-foreground">
+              Tilted side by side — hover to zoom in, click any card to open the project.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {projects.map((p, i) => (
+            <Reveal key={p.title} delay={i * 110}>
+              <button
+                onClick={() => setActive(p)}
+                style={{ transform: `rotate(${i % 2 === 0 ? -2.5 : 2.5}deg)` }}
+                className="glass-card h-full w-full rounded-2xl p-6 text-left transition-transform duration-300 hover:scale-110 hover:rotate-0 hover:shadow-[0_0_50px_oklch(0.62_0.24_262/45%)]"
+              >
+                <p className="font-display text-xs tracking-widest text-accent">{p.category}</p>
+                <p className="font-display mt-3 text-lg">{p.title}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{p.result}</p>
+                <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-accent">
+                  View project <ArrowRight className="h-3 w-3" />
+                </span>
+              </button>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {active && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/70 p-6 backdrop-blur-sm"
+          onClick={() => setActive(null)}
+        >
+          <div
+            className="animate-pop-3d glass-card relative w-full max-w-lg rounded-3xl p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setActive(null)}
+              aria-label="Close project"
+              className="absolute right-5 top-5 text-muted-foreground transition hover:text-foreground"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <p className="font-display text-xs tracking-widest text-accent">{active.category}</p>
+            <h3 className="chrome-text mt-3 text-3xl">{active.title}</h3>
+            <p className="mt-4 text-muted-foreground">{active.detail}</p>
+            <p className="font-display mt-4 text-accent">{active.result}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to={active.href}
+                onClick={() => setActive(null)}
+                className="glow-ring inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 font-semibold text-primary-foreground transition hover:scale-105"
+              >
+                Open project <ExternalLink className="h-4 w-4" />
+              </Link>
+              <button
+                onClick={open}
+                className="rounded-full border border-border px-5 py-2 font-semibold transition hover:bg-secondary"
+              >
+                Ask the avatar about this
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <section id="cta" className="px-6 py-32">
+
         <Reveal>
           <div className="glass-card mx-auto max-w-3xl rounded-3xl p-10 text-center">
             <h2 className="chrome-text text-4xl">LET'S BUILD YOURS</h2>
