@@ -148,9 +148,10 @@ function Contact() {
 
             <button
               type="submit"
-              className="glow-ring mt-6 w-full rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02]"
+              disabled={busy}
+              className="glow-ring disabled:opacity-60 mt-6 w-full rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02]"
             >
-              Send brief
+              {busy ? "Sending..." : "Send brief"}
             </button>
 
             {sent && (
