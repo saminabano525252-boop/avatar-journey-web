@@ -89,13 +89,19 @@ function AdminPage() {
       .from("contact_submissions")
       .update({ is_read: !row.is_read })
       .eq("id", row.id);
-    if (error) return toast.error("Update failed.");
+    if (error) {
+      toast.error("Update failed.");
+      return;
+    }
     setRows((r) => r.map((x) => (x.id === row.id ? { ...x, is_read: !x.is_read } : x)));
   };
 
   const remove = async (row: Submission) => {
     const { error } = await supabase.from("contact_submissions").delete().eq("id", row.id);
-    if (error) return toast.error("Delete failed.");
+    if (error) {
+      toast.error("Delete failed.");
+      return;
+    }
     setRows((r) => r.filter((x) => x.id !== row.id));
     toast.success("Enquiry deleted.");
   };
