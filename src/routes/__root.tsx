@@ -81,16 +81,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SAIF Solutions — 3D Web, Graphic & Marketing Studio in Karachi" },
+      { title: "SAIF Solutions — 3D Web, Graphic & Marketing Studio" },
       {
         name: "description",
-        content: "Karachi-based studio for interactive 3D web, graphic and marketing solutions, serving Pakistan and worldwide — online 24/7.",
+        content: "Studio for interactive 3D web, graphic and marketing solutions, serving clients worldwide — online 24/7.",
       },
       { name: "author", content: "SAIF Solutions" },
-      { property: "og:title", content: "SAIF Solutions — Karachi, Pakistan" },
+      { property: "og:title", content: "SAIF Solutions — Web, Graphic & Marketing" },
       {
         property: "og:description",
-        content: "Interactive 3D web, graphic and marketing solutions from Karachi, Pakistan.",
+        content: "Interactive 3D web, graphic and marketing solutions, delivered worldwide.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "SAIF Solutions" },
@@ -139,7 +139,7 @@ function RootComponent() {
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
         <footer className="border-t border-border px-6 py-10 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} SAIF Solutions — Karachi, Pakistan · Web · Graphic · Marketing
+          © {new Date().getFullYear()} SAIF Solutions — Web, Graphic & Marketing · Web · Graphic · Marketing
         </footer>
         <Toaster position="top-center" />
       </AvatarChatProvider>
