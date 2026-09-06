@@ -5,6 +5,8 @@ import { toast } from "sonner";
 import { Reveal } from "@/components/Reveal";
 import { AvatarGuide, type GuideStop } from "@/components/AvatarGuide";
 import { useAvatarChat } from "@/components/AvatarChatProvider";
+import { supabase } from "@/integrations/supabase/client";
+
 
 const SITE = "https://avatar-journey-web.lovable.app";
 
@@ -56,15 +58,31 @@ const services = ["Web Solutions", "Graphic Solutions", "Marketing Solutions"];
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
   const [service, setService] = useState(services[0]);
   const { open } = useAvatarChat();
 
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    setBusy(true);
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: String(fd.get("name") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      service: service ?? "Web Solutions",
+      brief: String(fd.get("brief") ?? ""),
+    });
+    setBusy(false);
+    if (error) {
+      toast.error("Could not send your brief. Please try again.");
+      return;
+    }
     setSent(true);
     toast.success("Brief received — we'll reply within one business day.");
-    e.currentTarget.reset();
+    form.reset();
   };
+
 
   return (
     <div className="px-6 pb-32 pt-32">
@@ -130,9 +148,10 @@ function Contact() {
 
             <button
               type="submit"
-              className="glow-ring mt-6 w-full rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02]"
+              disabled={busy}
+              className="glow-ring disabled:opacity-60 mt-6 w-full rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02]"
             >
-              Send brief
+              {busy ? "Sending..." : "Send brief"}
             </button>
 
             {sent && (

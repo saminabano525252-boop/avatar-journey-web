@@ -5,7 +5,9 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/contact", label: "Contact" },
+  { to: "/admin", label: "Admin" },
 ] as const;
+
 
 export function SiteNav() {
   return (
