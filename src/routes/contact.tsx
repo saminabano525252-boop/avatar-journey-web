@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, MessageCircle, Globe2, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { Reveal } from "@/components/Reveal";
 import { AvatarGuide, type GuideStop } from "@/components/AvatarGuide";
@@ -39,8 +39,7 @@ export const Route = createFileRoute("/contact")({
           about: {
             "@type": "Organization",
             name: "SAIF Solutions",
-            email: "hello@saifsolutions.com",
-            telephone: "+1-555-018-4420",
+            areaServed: "Worldwide",
           },
         }),
       },
