@@ -163,16 +163,16 @@ function Contact() {
 
         <Reveal delay={120}>
           <div className="tilt-3d glass-card h-full rounded-3xl p-8">
-            <h2 className="font-display text-xl">Direct lines</h2>
+            <h2 className="font-display text-xl">How we work</h2>
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-accent" /> hello@saifsolutions.com
+                <MessageCircle className="h-4 w-4 text-accent" /> Send a brief — we reply right here
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-accent" /> +1 (555) 018-4420
+                <Globe2 className="h-4 w-4 text-accent" /> Remote · worldwide
               </li>
               <li className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-accent" /> Remote · worldwide
+                <Clock className="h-4 w-4 text-accent" /> Online 24/7
               </li>
             </ul>
             <button
