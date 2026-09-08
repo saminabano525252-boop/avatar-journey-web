@@ -10,19 +10,21 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
+  // "init" renders fully visible so content is never blank without JS.
+  const [state, setState] = useState<"init" | "hidden" | "shown">("init");
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      setShown(true);
+      setState("shown");
       return;
     }
+    setState("hidden");
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting) setShown(true);
+        if (entry?.isIntersecting) setState("shown");
       },
       { threshold: 0.15 },
     );
@@ -33,7 +35,9 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={`${className} ${shown ? "animate-slide-3d" : "opacity-0"}`}
+      className={`${className} ${
+        state === "shown" ? "animate-slide-3d" : state === "hidden" ? "opacity-0" : ""
+      }`}
       style={{ animationDelay: `${delay}ms` }}
     >
       {children}
