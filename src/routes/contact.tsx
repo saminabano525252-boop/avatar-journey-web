@@ -166,10 +166,10 @@ function Contact() {
             <h2 className="font-display text-xl">How we work</h2>
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-center gap-3">
-                <MessageSquare className="h-4 w-4 text-accent" /> Send a brief — we reply right here
+                <MessageCircle className="h-4 w-4 text-accent" /> Send a brief — we reply right here
               </li>
               <li className="flex items-center gap-3">
-                <Globe className="h-4 w-4 text-accent" /> Remote · worldwide
+                <Globe2 className="h-4 w-4 text-accent" /> Remote · worldwide
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-accent" /> Online 24/7
