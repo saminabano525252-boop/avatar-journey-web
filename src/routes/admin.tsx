@@ -229,6 +229,36 @@ function AdminPage() {
     }
   };
 
+  const addImages = async (item: PortfolioItem, files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    try {
+      const urls: string[] = [];
+      for (const file of Array.from(files)) urls.push(await uploadCover(file));
+      const { error } = await supabase
+        .from("portfolio_items")
+        .update({ images: [...(item.images ?? []), ...urls] })
+        .eq("id", item.id);
+      if (error) throw error;
+      toast.success(urls.length > 1 ? "Pictures added." : "Picture added.");
+      await loadPortfolio();
+    } catch {
+      toast.error("Could not add pictures. Try smaller images.");
+    }
+  };
+
+  const removeImage = async (item: PortfolioItem, url: string) => {
+    const { error } = await supabase
+      .from("portfolio_items")
+      .update({ images: (item.images ?? []).filter((u) => u !== url) })
+      .eq("id", item.id);
+    if (error) {
+      toast.error("Could not remove the picture.");
+      return;
+    }
+    toast.success("Picture removed.");
+    await loadPortfolio();
+  };
+
   const removeItem = async (id: string) => {
     const { error } = await supabase.from("portfolio_items").delete().eq("id", id);
     if (error) {

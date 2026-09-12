@@ -16,6 +16,7 @@ export type PortfolioItem = {
   cover_url: string | null;
   video_url: string | null;
   external_url: string | null;
+  images: string[];
   sort_order: number;
 };
 
@@ -30,7 +31,7 @@ export async function fetchPortfolio() {
       .order("created_at", { ascending: true }),
     supabase
       .from("portfolio_items")
-      .select("id, category_id, title, description, result, cover_url, video_url, external_url, sort_order")
+      .select("id, category_id, title, description, result, cover_url, video_url, external_url, images, sort_order")
       .order("sort_order", { ascending: true })
       .order("created_at", { ascending: true }),
   ]);
